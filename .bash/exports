@@ -10,9 +10,14 @@ export LC_ALL=en_US.UTF-8
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# For compilers to find openjdk (per Homebrew instruction):
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-export JAVA_HOME=$(/usr/libexec/java_home)
+# Java
+if [ -d "/opt/homebrew/opt/openjdk" ]; then
+  # For compilers to find openjdk (per Homebrew instruction):
+  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 # Go
-export GOPATH=$HOME/workspace/go
+if [ -d "$HOME/workspace/gok3" ]; then
+  export GOPATH=$HOME/workspace/go
+fi
