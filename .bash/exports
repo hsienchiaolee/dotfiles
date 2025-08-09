@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Make emacs the default editor
+export EDITOR=emacsclient
+
+# Prefer US Engligh and use UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Hide the “default interactive shell is now zsh” warning on macOS.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# For compilers to find openjdk (per Homebrew instruction):
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Go
+export GOPATH=$HOME/workspace/go

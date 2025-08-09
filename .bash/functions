@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Processes #
+#########################
+pg() { ps xwwo pid,ppid,etime,%cpu,command | awk "/$1/ && "'!/awk/'; }
+pag() { ps axwwo pid,ppid,etime,%cpu,command | awk "/$1/ && "'!/awk/'; }
+
+# Text Manipulation #
+#####################
+suniq() { sort $* | uniq; }
+
+minus() { python - $* <<EOF
+import sys; s = set()
+for x in file(sys.argv[2]): s.add(x)
+for x in file(sys.argv[1]): 
+  if x not in s: print x,
+EOF
+}
+
+cap() { python - $* <<EOF
+import sys; s = set()
+for x in file(sys.argv[2]): s.add(x)
+for x in file(sys.argv[1]): 
+  if x in s: print x,
+EOF
+}

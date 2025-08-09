@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+paths=()
+
+# MySQL Workbench
+if [ -d "/Applications/MySQLWorkbench.app/Contents/MacOS" ]; then
+  paths+=("/Applications/MySQLWorkbench.app/Contents/MacOS")
+fi
+
+# rbenv
+if [ -d "$HOME/.rbenv" ]; then
+  paths+=(
+    "$HOME/.rbenv/shims"
+    "$HOME/.rbenv/bin"
+  )
+fi
+
+# Go
+if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
+  paths+=("$GOPATH/bin")
+fi
+
+# Rust
+if [ -d "$HOME/.cargo/bin" ]; then
+  paths+=("$HOME/.cargo/bin")
+fi
+
+# Add to PATH only if not already present
+for path in ${paths[*]}; do
+  [[ ":$PATH:" != *":$path:"* ]] && export PATH="${path}:${PATH}"
+done

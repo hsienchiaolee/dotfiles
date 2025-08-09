@@ -1,24 +1,29 @@
-# We need to do two things here:
+# Load shell dotfiles
+for file in ~/.bash/{exports,path,bash_prompt,aliases,functions,extra}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 
-# 1. Ensure ~/.bash/env gets run first
-. ~/.bash/env
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
 
-# 2. Prevent it from being run later, since we need to use $BASH_ENV for
-# non-login non-interactive shells.
-# We don't export it, as we may have a non-login non-interactive shell as
-# a child.
-BASH_ENV=
-
-# 3. Join the spanish inquisition. ;)
-# so much for only two things...
-
-# 4. Run ~/.bash/login
-. ~/.bash/login
-
-# 5. Run ~/.bash/interactive if this is an interactive shell.
-if [ "$PS1" ]; then
-    . ~/.bash/interactive
+# Setup Homebrew
+if command -v brew &> /dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Rust
-. "$HOME/.cargo/env"
+# Add tab completion for many Bash commands
+if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+	# Ensure existing Homebrew v1 completions continue to work
+	export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+	source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+if [ -e "$HOME/.ssh/config" ]; then
+  complete -o "default" -o "nospace" \
+           -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" \
+           scp sftp ssh
+fi

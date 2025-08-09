@@ -1,2 +1,0 @@
-# For compilers to find openjdk (per Homebrew instruction):
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

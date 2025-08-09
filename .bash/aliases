@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Git Aliases #
 ###############
 alias gcl='git clone'
@@ -73,28 +75,3 @@ alias sshtd='ssh -O exit $1'
 # Misc #
 ########
 alias clear-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-
-# Command Line Function #
-#########################
-alias pp='ps xwwo pid,ppid,etime,%cpu,command'
-alias ppa='ps axwwo pid,ppid,etime,%cpu,command'
-
-pg() { pp | awk "/$1/ && "'!/awk/'; }
-pag() { ppa | awk "/$1/ && "'!/awk/'; }
-suniq() { sort $* | uniq; }
-
-minus() { python - $* <<EOF
-import sys; s = set()
-for x in file(sys.argv[2]): s.add(x)
-for x in file(sys.argv[1]): 
-  if x not in s: print x,
-EOF
-}
-
-cap() { python - $* <<EOF
-import sys; s = set()
-for x in file(sys.argv[2]): s.add(x)
-for x in file(sys.argv[1]): 
-  if x in s: print x,
-EOF
-}
