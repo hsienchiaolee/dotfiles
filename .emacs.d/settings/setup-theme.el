@@ -10,7 +10,6 @@
   :defer t
   :init
   (setq powerline-default-separator 'slant)
-  (setq ns-use-srgb-colorspace nil)
   (setq powerline-height 18)
   )
 

@@ -1,3 +1,9 @@
+;;; setup-interface.el --- Setup interface -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;;; This package sets up the emacs interface and set macOS specific
+;;; configurations.
+
 ;; Font
 (set-face-attribute 'default nil
                     :family "Menlo"
@@ -11,6 +17,10 @@
 (if (fboundp 'tabbar-mode) (tabbar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; macOS specific settings
+(setq ns-use-srgb-colorspace nil) ;; disables the use of the sRGB colorspace to prevent color mismatches
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 
 ;; vertical window split
 (setq split-width-threshold 190)
