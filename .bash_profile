@@ -7,11 +7,6 @@ unset file
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
-# Setup Homebrew
-if command -v brew &> /dev/null; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Add tab completion for many Bash commands
 if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
 	# Ensure existing Homebrew v1 completions continue to work
