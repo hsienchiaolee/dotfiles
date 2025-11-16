@@ -14,11 +14,6 @@
   :commands (lsp lsp-deferred)
   :config
   (progn
-    ;; dynamically set python lsp environment
-    ;; (setq lsp-python-ms-python-executable-cmd "pyright")
-    (setq lsp-python-ms-python-executable-cmd
-        (expand-file-name "venv/bin/python" (projectile-project-root)))
-
     ;; use flycheck, not flymake
     (setq lsp-prefer-flymake nil)
     )
@@ -122,13 +117,27 @@
 
 ;; python-mode
 ;; Dependencies:
-;; npm install -g pyright
+;; brew install uv
+;; uv add --dev black pyright
 (use-package python-mode
   :ensure t
-  :hook ((python-mode . lsp-deferred)
-         (before-save . lsp-format-buffer)
-         (before-save . lsp-organize-imports))
+  :hook (python-mode . lsp-deferred)
   )
+
+(use-package lsp-pyright
+  :ensure t
+  :after lsp-mode
+  :hook (python-mode . lsp-deferred)
+  )
+
+(use-package python-black
+  :ensure t
+  :hook (python-mode . python-black-on-save-mode)
+  )
+
+(use-package pyvenv
+  :ensure t
+  :hook (python-mode . pyvenv-tracking-mode))
 
 ;; scala-mode
 (use-package scala-mode
