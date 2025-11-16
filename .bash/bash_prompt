@@ -18,7 +18,14 @@ prompt_git() {
   echo -e "(${branchName})";
 }
 
-export PS1='\t \u@\h:\w$(prompt_git)\$ '
+# Direnv cannot self update PS1 when auto-loading python environments
+# This is a work around to update the prompt appropriately
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $PWD)) "
+  fi
+}
+export PS1='$(show_virtual_env)\t \u@\h:\w$(prompt_git)\$ '
 
 # Commenting out in favor of simpler prompt, might feel differently in
 # the future

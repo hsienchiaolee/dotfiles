@@ -135,9 +135,12 @@
   :hook (python-mode . python-black-on-save-mode)
   )
 
-(use-package pyvenv
+;; brew install direnv
+(use-package direnv
   :ensure t
-  :hook (python-mode . pyvenv-tracking-mode))
+  :config
+  (direnv-mode)
+  )
 
 ;; scala-mode
 (use-package scala-mode

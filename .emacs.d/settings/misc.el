@@ -38,7 +38,7 @@
             ;(setq ssh-directory-tracking-mode 'ftp)
             ;; Custom dirtrack-mode for PS1: time user@host:/dir(branch)$
             (setq-local dirtrack-list
-                  '("^[0-9:]+ [^@]+@[^:]+:\\(.*?\\)\\(([^)]*)\\)?\\$ " 1))
+                  '("^\\(?:([^)]*) *\\)?[0-9:]+ [^@]+@[^:]+:\\(.*?\\)\\(([^)]*)\\)?\\$ " 1))
             (dirtrack-mode 1)
             ;(dirtrack-debug-mode)
             ))
