@@ -118,6 +118,8 @@
 ;; python-mode
 ;; Dependencies:
 ;; brew install uv
+;; uv python install $VERSION --default
+;; In projects:
 ;; uv add --dev black pyright
 (use-package python-mode
   :ensure t
