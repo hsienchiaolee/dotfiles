@@ -120,7 +120,7 @@
 ;; brew install uv
 ;; uv python install $VERSION --default
 ;; In projects:
-;; uv add --dev black pyright
+;; uv add --dev pyright ruff
 (use-package python-mode
   :ensure t
   :hook (python-mode . lsp-deferred)
@@ -132,9 +132,14 @@
   :hook (python-mode . lsp-deferred)
   )
 
-(use-package python-black
+(use-package apheleia
   :ensure t
-  :hook (python-mode . python-black-on-save-mode)
+  :config
+  (add-to-list 'apheleia-formatters
+               '(ruff . ("ruff" "format" "-")))
+  (add-to-list 'apheleia-mode-alist
+               '(python-mode . ruff))
+  (apheleia-global-mode +1)
   )
 
 ;; brew install direnv
