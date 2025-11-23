@@ -1,15 +1,17 @@
 ;;; setup-interface.el --- Setup interface -*- lexical-binding: t; -*-
 ;;; Commentary:
 
-;;; This package sets up the emacs interface and set macOS specific
-;;; configurations.
+;; This package sets up the emacs interface and set macOS specific
+;; configurations.
+
+;;; Code:
 
 ;; Font
 (set-face-attribute 'default nil
                     :family "Menlo"
                     :height 160)
 (set-face-attribute 'fixed-pitch nil
-                    :family 'unspecified
+                    :family nil
                     :inherit 'default)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
@@ -35,3 +37,4 @@
 (show-paren-mode 1)
 
 (provide 'setup-interface)
+;;; setup-interface.el ends here

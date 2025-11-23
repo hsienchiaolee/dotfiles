@@ -1,3 +1,10 @@
+;;; setup-yasnippet.el --- Setup YASnippet -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for YASnippet template system.
+
+;;; Code:
+
 (use-package yasnippet
   :ensure t
   :config
@@ -25,7 +32,7 @@
     ("g" yas/global-mode)
     ("m" yas/minor-mode)
     ("a" yas-reload-all))
-  (define-key yas-minor-mode-map (kbd "C-c y") `hydra-yasnippet/body)
-  )
+  (define-key yas-minor-mode-map (kbd "C-c y") 'hydra-yasnippet/body))
 
 (provide 'setup-yasnippet)
+;;; setup-yasnippet.el ends here

@@ -1,3 +1,10 @@
+;;; setup-package.el --- Setup package management -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for Emacs package management with use-package.
+
+;;; Code:
+
 (require 'package)
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -29,7 +36,7 @@
     `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
   (setq backup-directory-alist
     `((".*" . ,(no-littering-expand-var-file-name "backup/"))))
-  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-  )
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory)))
 
 (provide 'setup-package)
+;;; setup-package.el ends here

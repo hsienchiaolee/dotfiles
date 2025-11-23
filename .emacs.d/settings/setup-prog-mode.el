@@ -61,19 +61,19 @@
   ;;        (scala-mode . copilot-mode)
   ;;        )
   :bind (:map copilot-completion-map
-          ("<tab>" . 'copilot-accept-completion)
-          ("TAB" . 'copilot-accept-completion)
-          ("C-TAB" . 'copilot-accept-completion-by-word)
-          ("C-<tab>" . 'copilot-accept-completion-by-word)
-          ("C-n" . 'copilot-next-completion)
-          ("C-p" . 'copilot-previous-completion)
-          )
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-n" . 'copilot-next-completion)
+              ("C-p" . 'copilot-previous-completion)
+              )
   :config
-    (add-to-list 'copilot-indentation-alist '(prog-mode 2))
-    (add-to-list 'copilot-indentation-alist '(org-mode 2))
-    (add-to-list 'copilot-indentation-alist '(text-mode 2))
-    (add-to-list 'copilot-indentation-alist '(closure-mode 2))
-    (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
   )
 
 ;; optional package to get the error squiggles as you edit
@@ -97,8 +97,8 @@
          (before-save . lsp-organize-imports))
   :config
   (defhydra hydra-go-mode (:color teal
-                           :hint nil)
-"
+                                  :hint nil)
+    "
      Playground                 Godef
 ---------------------------------------------------
  _p_: buffer                _d_: describe
@@ -112,8 +112,7 @@
     ("j"   godef-jump)
     ("J"   godef-jump-other-window)
     ("q"   nil "cancel" :color blue))
-  (define-key go-mode-map (kbd "C-c h") `hydra-go-mode/body)
-  )
+  (define-key go-mode-map (kbd "C-c h") 'hydra-go-mode/body))
 
 ;; python-mode
 ;; Dependencies:
@@ -139,22 +138,19 @@
                '(ruff . ("ruff" "format" "-")))
   (add-to-list 'apheleia-mode-alist
                '(python-mode . ruff))
-  (apheleia-global-mode +1)
-  )
+  (apheleia-global-mode +1))
 
 ;; brew install direnv
 (use-package direnv
   :ensure t
   :config
-  (direnv-mode)
-  )
+  (direnv-mode))
 
 ;; scala-mode
 (use-package scala-mode
   :ensure t
   :mode "\\.s\\(cala\\|bt\\)$"
-  :hook (scala-mode . lsp-deferred)
-  )
+  :hook (scala-mode . lsp-deferred))
 
 (use-package lsp-metals
   :ensure t
@@ -177,15 +173,14 @@
          (org-mode . visual-line-mode)
          )
   :config
-  (define-key org-mode-map (kbd "RET") `org-return-indent)
+  (define-key org-mode-map (kbd "RET") 'org-return-indent)
 
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((shell . t)
      (python . t)
      (ruby . t)
-     (emacs-lisp . t)))
-  )
+     (emacs-lisp . t))))
 
 ;; swift
 (use-package swift-mode
@@ -198,8 +193,7 @@
   :ensure t
   :defer t
   :config
-  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode)
-  )
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 ;; yaml
 (use-package yaml-mode
@@ -221,8 +215,7 @@
   :bind (("C-c C-c" . rust-run))
   :custom
   (rust-format-on-save t)
-  :mode ("\\.rs\\'" . rust-mode)
-  )
+  :mode ("\\.rs\\'" . rust-mode))
 
 ;; protobuf
 (use-package protobuf-mode
@@ -230,3 +223,4 @@
   :defer t)
 
 (provide 'setup-prog-mode)
+;;; setup-prog-mode.el ends here

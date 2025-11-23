@@ -1,3 +1,10 @@
+;;; misc.el --- Miscellaneous settings -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Miscellaneous Emacs settings and package configurations.
+
+;;; Code:
+
 ;; Emacs Settings
 (setq ring-bell-function 'ignore)
 (setq inhibit-startup-screen t)
@@ -17,7 +24,7 @@
 (use-package vagrant-tramp
   :ensure t)
 
-;; ansible valut
+;; ansible vault
 (use-package ansible-vault
   :ensure t
   :pin melpa-stable
@@ -44,3 +51,4 @@
             ))
 
 (provide 'misc)
+;;; misc.el ends here

@@ -1,3 +1,10 @@
+;;; setup-multiple-cursors.el --- Setup multiple cursors -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for multiple cursors package.
+
+;;; Code:
+
 (use-package multiple-cursors
   :ensure t
   :config
@@ -21,7 +28,7 @@
     ("r" mc/mark-all-in-region-regexp :exit t)
     ("q" nil))
 
-  (global-set-key (kbd "C-> m") 'hydra-multiple-cursors/body)
-  )
+  (global-set-key (kbd "C-> m") 'hydra-multiple-cursors/body))
 
 (provide 'setup-multiple-cursors)
+;;; setup-multiple-cursors.el ends here

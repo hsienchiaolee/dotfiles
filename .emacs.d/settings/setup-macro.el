@@ -1,3 +1,10 @@
+;;; setup-macro.el --- Setup keyboard macros -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for keyboard macros.
+
+;;; Code:
+
 (defun apply-named-macro-to-region-lines (top bottom)
   "Apply named keyboard macro to all lines in the region."
   (interactive "r")
@@ -19,3 +26,4 @@
 (global-set-key (kbd "s-\\ n") 'apply-named-macro-to-region-lines)
 
 (provide 'setup-macro)
+;;; setup-macro.el ends here

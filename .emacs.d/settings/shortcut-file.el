@@ -1,3 +1,10 @@
+;;; shortcut-file.el --- File shortcuts -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Quick shortcuts to commonly accessed files.
+
+;;; Code:
+
 (defhydra hydra-file-shortcuts (:color teal
                                 :columns 4)
   "files"
@@ -11,3 +18,4 @@
 (global-set-key (kbd "s-/") 'hydra-file-shortcuts/body)
 
 (provide 'shortcut-file)
+;;; shortcut-file.el ends here

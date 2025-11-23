@@ -1,3 +1,10 @@
+;;; setup-ivy.el --- Setup Ivy -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for Ivy completion framework and related packages.
+
+;;; Code:
+
 (use-package ivy
   :ensure t
   :custom
@@ -7,8 +14,7 @@
   :config
   (define-key ivy-minibuffer-map (kbd "C-n") 'ivy-next-line)
   (define-key ivy-minibuffer-map (kbd "C-P") 'ivy-previous-line)
-  (define-key ivy-minibuffer-map [remap kill-whole-visual-line] 'ivy-kill-whole-line)
-  )
+  (define-key ivy-minibuffer-map [remap kill-whole-visual-line] 'ivy-kill-whole-line))
 
 (use-package counsel
   :ensure t
@@ -18,7 +24,7 @@
 
 (use-package swiper
   :ensure t
-  :bind (("s-f" . swiper))
-  )
+  :bind (("s-f" . swiper)))
 
 (provide 'setup-ivy)
+;;; setup-ivy.el ends here

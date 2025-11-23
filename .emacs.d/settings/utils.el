@@ -1,3 +1,10 @@
+;;; utils.el --- Utility functions -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Utility functions and key bindings.
+
+;;; Code:
+
 ;; eval-and-replace
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -15,6 +22,7 @@
 
 ;; duplicate line
 (defun duplicate-line ()
+  "Duplicate the current line."
   (interactive)
   (let ((text (buffer-substring (line-beginning-position) (line-end-position))))
     (move-end-of-line 1)
@@ -27,3 +35,4 @@
   :bind ("C-@" . er/expand-region))
 
 (provide 'utils)
+;;; utils.el ends here

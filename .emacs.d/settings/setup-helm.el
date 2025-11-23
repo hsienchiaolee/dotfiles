@@ -1,3 +1,10 @@
+;;; setup-helm.el --- Setup Helm -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for Helm completion framework.
+
+;;; Code:
+
 (use-package helm
   :ensure t
   :init
@@ -6,10 +13,10 @@
 
   :bind (("C-x b" . helm-mini))
   :config
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  )
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action))
 
 (use-package helm-rg
   :ensure t)
 
 (provide 'setup-helm)
+;;; setup-helm.el ends here

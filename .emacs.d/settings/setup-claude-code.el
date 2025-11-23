@@ -35,3 +35,4 @@
   (:repeat-map my-claude-code-map ("M" . claude-code-cycle-mode)))
 
 (provide 'setup-claude-code)
+;;; setup-claude-code.el ends here

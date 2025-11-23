@@ -1,3 +1,10 @@
+;;; shortcut-timestamp.el --- Timestamp shortcuts -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Quick shortcuts for inserting timestamps in various formats.
+
+;;; Code:
+
 ;; time stamp
 (defun insert-day-stamp ()
   (interactive "*")
@@ -13,6 +20,6 @@
   (interactive "*")
   (insert (format-time-string "%Y%m%d-%H%M%S" (current-time))))
 (global-set-key (kbd "s-_") 'insert-time-stamp)
-;; (put 'downcase-region 'disabled nil)
 
 (provide 'shortcut-timestamp)
+;;; shortcut-timestamp.el ends here

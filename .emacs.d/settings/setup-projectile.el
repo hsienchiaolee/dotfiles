@@ -1,3 +1,10 @@
+;;; setup-projectile.el --- Setup Projectile -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Configuration for Projectile project management.
+
+;;; Code:
+
 (use-package projectile
   :ensure t
   :init
@@ -5,7 +12,7 @@
   (setq projectile-enable-caching t)
   :config
   (projectile-global-mode t)
-  
+
   (defhydra hydra-projectile-other-window (:color teal)
     "projectile-other-window"
     ("f"  projectile-find-file-other-window        "file")
@@ -45,12 +52,10 @@ _s-f_: file            _a_: ag                _b_: switch to buffer  _c_: cache 
     ("`"   hydra-projectile-other-window/body "other window")
     ("q"   nil "cancel" :color blue))
 
-  (global-set-key (kbd "C-> o") 'hydra-projectile/body)
-  )
+  (global-set-key (kbd "C-> o") 'hydra-projectile/body))
 
 (use-package helm-projectile
-  :ensure t
-  )
+  :ensure t)
 
 (use-package counsel-projectile
   :ensure t
@@ -58,8 +63,7 @@ _s-f_: file            _a_: ag                _b_: switch to buffer  _c_: cache 
   (setq counsel-projectile-find-file-matcher 'ivy--re-filter)
   (setq counsel-projectile-sort-files nil)
   :config
-  (counsel-projectile-mode)
-  )
-
+  (counsel-projectile-mode))
 
 (provide 'setup-projectile)
+;;; setup-projectile.el ends here

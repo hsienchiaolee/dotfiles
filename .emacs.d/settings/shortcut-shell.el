@@ -1,7 +1,15 @@
+;;; shortcut-shell.el --- Shell shortcuts -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; Quick access to multiple shell buffers with keybindings.
+
+;;; Code:
+
 (add-to-list 'display-buffer-alist
              '("^\\*shell\\*$" . (display-buffer-same-window)))
 
 (defun shell-named (name)
+  "Open a shell and rename it to NAME."
   (shell)
   (rename-buffer name)
   (set-process-query-on-exit-flag (get-buffer-process name) nil))
@@ -12,6 +20,7 @@
        (shell-named ,name))))
 
 (defun remote-shell-named (name)
+  "Open a remote shell and rename it to NAME."
   (interactive)
   (better-shell-remote-open)
   (rename-buffer name)
@@ -70,7 +79,7 @@ _X_: close connections
     ("X" tramp-cleanup-all-connections)
     ("q" nil "cancel" :color blue)
     )
-  (global-set-key (kbd "C-> s") 'hydra-better-shell/body)
-  )
+  (global-set-key (kbd "C-> s") 'hydra-better-shell/body))
 
 (provide 'shortcut-shell)
+;;; shortcut-shell.el ends here

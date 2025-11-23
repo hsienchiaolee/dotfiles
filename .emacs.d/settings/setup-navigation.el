@@ -1,3 +1,10 @@
+;;; setup-navigation.el --- Setup navigation and window management -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; This package sets up navigation, window management, and line movement utilities.
+
+;;; Code:
+
 ;; disable reuse dired buffer
 (put 'dired-find-alternate-file 'disabled nil)
 
@@ -16,7 +23,7 @@ _O_: off
   ("o" text-scale-decrease :exit nil)
   ("O" (text-scale-adjust 0))
   ("q" nil "cancel" :color blue))
-(global-set-key (kbd "C-> z") `hydra-zoom/body)
+(global-set-key (kbd "C-> z") 'hydra-zoom/body)
 
 ;; registers
 (global-set-key (kbd "s-j") 'jump-to-register)
@@ -37,17 +44,23 @@ _O_: off
 
 ;; Lines
 (defun move-line (n)
+  "Move current line N lines forward (or backward if N is negative)."
   (interactive "p")
-  (setq col (current-column))
-  (beginning-of-line) (setq start (point))
-  (end-of-line) (forward-char) (setq end (point))
-  (let ((line-text (delete-and-extract-region start end)))
-    (forward-line n)
-    (insert line-text)
-    (forward-line -1)
-    (forward-char col)))
+  (let ((col (current-column))
+        start end)
+    (beginning-of-line)
+    (setq start (point))
+    (end-of-line)
+    (forward-char)
+    (setq end (point))
+    (let ((line-text (delete-and-extract-region start end)))
+      (forward-line n)
+      (insert line-text)
+      (forward-line -1)
+      (forward-char col))))
 
 (defun move-region (start end n)
+  "Move region from START to END by N lines."
   (interactive "r\np")
   (let ((line-text (delete-and-extract-region start end)))
     (forward-line n)
@@ -57,26 +70,32 @@ _O_: off
       (set-mark start))))
 
 (defun move-line-up (n)
+  "Move current line up N lines."
   (interactive "p")
   (move-line (if (null n) -1 (- n))))
 
 (defun move-line-down (n)
+  "Move current line down N lines."
   (interactive "p")
   (move-line (if (null n) 1 n)))
 
 (defun move-region-up (start end n)
+  "Move region from START to END up N lines."
   (interactive "r\np")
   (move-region start end (if (null n) -1 (- n))))
 
 (defun move-region-down (start end n)
+  "Move region from START to END down N lines."
   (interactive "r\np")
   (move-region start end (if (null n) 1 n)))
 
 (defun move-line-region-up (&optional start end n)
+  "Move current line or region up N lines."
   (interactive "r\np")
   (if (use-region-p) (move-region-up start end n) (move-line-up n)))
 
 (defun move-line-region-down (&optional start end n)
+  "Move current line or region down N lines."
   (interactive "r\np")
   (if (use-region-p) (move-region-down start end n) (move-line-down n)))
 
@@ -86,7 +105,7 @@ _O_: off
 (global-set-key (kbd "s-\\ k") 'keep-lines)
 (global-set-key (kbd "s-\\ d") 'delete-matching-lines)
 (global-set-key (kbd "s-\\ t") 'toggle-truncate-lines)
-(add-hook 'text-mode-hook '(lambda () (visual-line-mode)))
+(add-hook 'text-mode-hook (lambda () (visual-line-mode)))
 
 ;; buffer
 (use-package buffer-move
@@ -106,3 +125,4 @@ _O_: off
 (global-set-key (kbd "C-x C-c") nil)
 
 (provide 'setup-navigation)
+;;; setup-navigation.el ends here
