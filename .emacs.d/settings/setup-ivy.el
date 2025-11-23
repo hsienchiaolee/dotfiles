@@ -19,6 +19,9 @@
 (use-package counsel
   :ensure t
   :demand t
+  :custom
+  ;; Add --hidden flag to search hidden files with counsel-rg and counsel-projectile-rg
+  (counsel-rg-base-command "rg -S --no-heading --line-number --color never --hidden %s")
   :config
   (counsel-mode 1))
 
