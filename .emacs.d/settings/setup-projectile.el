@@ -8,8 +8,12 @@
 (use-package projectile
   :ensure t
   :init
-  (setq projectile-use-git-grep t)
+  (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching t)
+  (setq projectile-sort-order 'recentf)
+  (setq projectile-file-exists-remote-cache-expire (* 10 60))
+  (setq projectile-require-project-root t)
+  (setq projectile-git-submodule-command nil)
   :config
   (projectile-mode +1)
 
