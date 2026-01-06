@@ -114,10 +114,11 @@
   (apheleia-global-mode +1))
 
 ;; brew install direnv
-(use-package direnv
+;; envrc provides better direnv integration for Emacs
+;; Ensures subprocesses (like ansible-vault) inherit the virtualenv environment
+(use-package envrc
   :ensure t
-  :config
-  (direnv-mode))
+  :hook (after-init . envrc-global-mode))
 
 ;; scala-mode
 (use-package scala-mode
