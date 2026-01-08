@@ -66,8 +66,9 @@
          ("C-c C-d" . lsp-describe-thing-at-point)
          )
   :hook ((go-mode . lsp-deferred)
-         (before-save . lsp-format-buffer)
-         (before-save . lsp-organize-imports))
+         (go-mode . (lambda ()
+                      (add-hook 'before-save-hook #'lsp-format-buffer nil t)
+                      (add-hook 'before-save-hook #'lsp-organize-imports nil t))))
   :config
   (defhydra hydra-go-mode (:color teal
                                   :hint nil)
@@ -106,12 +107,12 @@
 
 (use-package apheleia
   :ensure t
+  :hook (python-mode . apheleia-mode)
   :config
   (add-to-list 'apheleia-formatters
                '(ruff . ("ruff" "format" "-")))
   (add-to-list 'apheleia-mode-alist
-               '(python-mode . ruff))
-  (apheleia-global-mode +1))
+               '(python-mode . ruff)))
 
 ;; brew install direnv
 ;; envrc provides better direnv integration for Emacs
