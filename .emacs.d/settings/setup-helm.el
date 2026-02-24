@@ -10,6 +10,7 @@
   :init
   (setq helm-ff-file-name-history-use-recentf t)
   (setq helm-move-to-line-cycle-in-source nil)
+  (setq helm-buffer-max-length 50)
 
   :bind (("C-x b" . helm-mini))
   :config
