@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;; This package installs programming related modes as well as setting
-;; up LSP and copilot.
+;; up LSP.
 
 ;;; Code:
 
