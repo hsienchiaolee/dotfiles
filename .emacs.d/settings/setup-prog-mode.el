@@ -13,41 +13,32 @@
   ;; :custom (lsp-gopls-server-args '("-debug" "127.0.0.1:0"))
   :commands (lsp lsp-deferred)
   :config
-  (progn
-    ;; use flycheck, not flymake
-    (setq lsp-prefer-flymake nil)
-    )
-  )
+  ;; use flycheck, not flymake
+  (setq lsp-prefer-flymake nil))
 
 ;; provides fancy overlay information
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode
   :config
-  (progn
-    ;; disable inline documentation
-    (setq lsp-ui-sideline-enable nil)
-    ;; disable showing docs on hover at the top of the window
-    (setq lsp-ui-doc-enable nil)
-    )
-  )
+  ;; disable inline documentation
+  (setq lsp-ui-sideline-enable nil)
+  ;; disable showing docs on hover at the top of the window
+  (setq lsp-ui-doc-enable nil))
 
 (use-package company
   :ensure t
   :hook ((prog-mode . company-mode)
          (prog-mode . display-line-numbers-mode))
   :config
-  (progn
-    ;; don't add any dely before trying to complete thing being typed
-    ;; the call/response to gopls is asynchronous so this should have little
-    ;; to no affect on edit latency
-    (setq company-idle-delay 0.1)
-    ;; start completing after a single character instead of 3
-    (setq company-minimum-prefix-length 1)
-    ;; align fields in completions
-    (setq company-tooltip-align-annotations t)
-    )
-  )
+  ;; don't add any dely before trying to complete thing being typed
+  ;; the call/response to gopls is asynchronous so this should have little
+  ;; to no affect on edit latency
+  (setq company-idle-delay 0.1)
+  ;; start completing after a single character instead of 3
+  (setq company-minimum-prefix-length 1)
+  ;; align fields in completions
+  (setq company-tooltip-align-annotations t))
 
 ;; optional package to get the error squiggles as you edit
 (use-package flycheck
@@ -166,9 +157,7 @@
 ;; terraform
 (use-package terraform-mode
   :ensure t
-  :defer t
-  :config
-  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+  :hook (terraform-mode . terraform-format-on-save-mode))
 
 ;; yaml
 (use-package yaml-mode

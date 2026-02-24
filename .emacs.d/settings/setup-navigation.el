@@ -105,15 +105,13 @@ _O_: off
 (global-set-key (kbd "s-\\ k") 'keep-lines)
 (global-set-key (kbd "s-\\ d") 'delete-matching-lines)
 (global-set-key (kbd "s-\\ t") 'toggle-truncate-lines)
-(add-hook 'text-mode-hook (lambda () (visual-line-mode)))
+(add-hook 'text-mode-hook #'visual-line-mode)
 
 ;; buffer
 (use-package buffer-move
   :ensure t
-  :init
-  (global-set-key (kbd "M-s-<left>") 'buf-move-left)
-  (global-set-key (kbd "M-s-<right>") 'buf-move-right)
-  )
+  :bind (("M-s-<left>" . buf-move-left)
+         ("M-s-<right>" . buf-move-right)))
 (global-set-key (kbd "s-t") 'new-empty-buffer)
 (global-set-key (kbd "s-r") 'revert-buffer)
 (global-set-key (kbd "s-q") 'erase-buffer)

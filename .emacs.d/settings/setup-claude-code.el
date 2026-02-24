@@ -21,10 +21,9 @@
 (use-package claude-code
   :ensure t
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
-  :config  
-  (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
+  :hook (claude-code-process-environment-functions . monet-start-server-function)
+  :config
   (monet-mode 1)
-  
   (setq claude-code-terminal-backend 'vterm)
   (claude-code-mode)
   
