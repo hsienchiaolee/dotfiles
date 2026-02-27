@@ -1,0 +1,21 @@
+# Secrets and credentials
+.env
+.env.*
+*.secret
+*.secrets
+secrets/
+secrets.*
+
+# API keys and tokens
+*credentials*
+*api_key*
+*apikey*
+*.pem
+*.key
+
+# Cloud provider configs with credentials
+.aws/credentials
+.gcloud/
+
+# Ansible
+.vault-pass

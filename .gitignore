@@ -37,3 +37,11 @@ ensime.sbt
 .emacs.d/elpa/
 .emacs.d/elpy/
 .emacs.d/var/
+
+# Claude Code - ignore ephemeral/session data, track only config
+.claude/*
+!.claude/CLAUDE.md
+!.claude/.claudeignore
+!.claude/settings.json
+!.claude/settings.local.json
+!.claude/statusline-command.sh

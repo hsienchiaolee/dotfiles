@@ -1,0 +1,3 @@
+- Prefer `rg` over `grep`
+- Prefer `fd` over `find`
+- Git commit messages: concise single line, no Co-Authored-By
