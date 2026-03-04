@@ -14,6 +14,7 @@ This is a personal dotfiles repository containing Emacs configuration, Bash shel
   - `custom.el` - Emacs custom variables (auto-generated)
 - `.bash/` - Modular Bash configuration files
   - Loaded by `.bash_profile` in order: exports, path, bash_prompt, aliases, functions, extra
+- `.config/mise/config.toml` - mise global tool versions (symlinked to `~/.config/mise/config.toml`)
 - `.gitconfig` - Git configuration
 - `direnv/` - direnv configuration templates
 
@@ -45,25 +46,34 @@ Configured languages in `setup-prog-mode.el`:
   - Dependency: `go install golang.org/x/tools/gopls@latest`
 - **Python**: Uses `lsp-pyright` with `apheleia` + ruff for formatting
   - Dependencies: `uv add --dev pyright ruff` (in project directories)
-  - Python setup uses `uv` (replaces pyenv)
-  - Default Python installation: `uv python install $VERSION --default`
+  - Python and uv are managed by mise
 - **Scala**: Uses `lsp-metals`
 - **Rust**: Auto-formats on save via `rust-mode`
 - **Others**: Swift, Terraform, YAML, Markdown, Protobuf
 
+## Tool Version Management
+
+Uses `mise` to manage all language runtimes (node, ruby, python, go, rust, java) and tools like `uv`.
+
+- Global config: `~/.config/mise/config.toml` (symlinked from `.config/mise/config.toml` in this repo)
+- Per-project versions: `.mise.toml` in project root
+- `mise use <tool>@<version>` to set versions
+- `mise install` to install all configured tools
+
 ## Python Development Setup
 
-Uses `uv` instead of pyenv for Python version management.
+Uses `mise` for Python version management and `uv` (installed via mise) for Python packages.
 
 ### Installing Python Versions
 ```bash
-uv python install $VERSION --default
+mise use python@VERSION
 ```
 
 ### Project Setup with direnv
 
 Copy the template from `direnv/python-project/.envrc`:
 ```bash
+use mise
 export VIRTUAL_ENV=".venv"
 layout python
 ```
@@ -73,7 +83,7 @@ Then run:
 direnv allow
 ```
 
-This auto-activates the virtualenv when entering the directory.
+This auto-activates mise tool versions and the virtualenv when entering the directory.
 
 ### Adding Dev Dependencies
 ```bash
