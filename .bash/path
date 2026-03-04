@@ -7,27 +7,9 @@ if [ -d "/Applications/MySQLWorkbench.app/Contents/MacOS" ]; then
   paths+=("/Applications/MySQLWorkbench.app/Contents/MacOS")
 fi
 
-# Setup uv
-if command -v uv 1>/dev/null 2>&1; then
-  paths+=("$HOME/.local/bin")
-fi
-
-# rbenv
-if [ -d "$HOME/.rbenv" ]; then
-  paths+=(
-    "$HOME/.rbenv/shims"
-    "$HOME/.rbenv/bin"
-  )
-fi
-
 # Go
 if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
   paths+=("$GOPATH/bin")
-fi
-
-# Rust
-if [ -d "$HOME/.cargo/bin" ]; then
-  paths+=("$HOME/.cargo/bin")
 fi
 
 # Add to PATH only if not already present
