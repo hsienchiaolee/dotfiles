@@ -22,3 +22,7 @@ mkdir -p "$HOME/.claude"
 for file in CLAUDE.md .claudeignore settings.json statusline-command.sh; do
   link "$DOTFILES/.claude/$file" "$HOME/.claude/$file"
 done
+
+# mise config
+mkdir -p "$HOME/.config/mise"
+link "$DOTFILES/mise/config.toml" "$HOME/.config/mise/config.toml"

@@ -1,0 +1,8 @@
+[tools]
+node = "lts"
+ruby = "latest"
+python = "latest"
+go = "latest"
+rust = "latest"
+java = "latest"
+uv = "latest"
