@@ -24,5 +24,5 @@ for file in CLAUDE.md .claudeignore settings.json statusline-command.sh; do
 done
 
 # mise config
-mkdir -p "$HOME/.config/mise"
-link "$DOTFILES/mise/config.toml" "$HOME/.config/mise/config.toml"
+mkdir -p "$HOME/.config"
+link "$DOTFILES/.config/mise" "$HOME/.config/mise"
