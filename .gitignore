@@ -43,5 +43,4 @@ ensime.sbt
 !.claude/CLAUDE.md
 !.claude/.claudeignore
 !.claude/settings.json
-!.claude/settings.local.json
 !.claude/statusline-command.sh
