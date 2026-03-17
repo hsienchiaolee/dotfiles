@@ -11,6 +11,6 @@ export LC_ALL=en_US.UTF-8
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Go
-if [ -d "$HOME/workspace/gok3" ]; then
+if [ -d "$HOME/workspace/go" ]; then
   export GOPATH=$HOME/workspace/go
 fi
