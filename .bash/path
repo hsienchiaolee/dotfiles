@@ -2,11 +2,6 @@
 
 paths=()
 
-# MySQL Workbench
-if [ -d "/Applications/MySQLWorkbench.app/Contents/MacOS" ]; then
-  paths+=("/Applications/MySQLWorkbench.app/Contents/MacOS")
-fi
-
 # Go
 if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
   paths+=("$GOPATH/bin")
