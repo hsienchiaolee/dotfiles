@@ -12,6 +12,11 @@ if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
   paths+=("$GOPATH/bin")
 fi
 
+# Symlink Emacs.app binary if not already linked
+if [ -x "/Applications/Emacs.app/Contents/MacOS/Emacs" ] && [ ! -e "/usr/local/bin/emacs" ]; then
+  sudo ln -s /Applications/Emacs.app/Contents/MacOS/Emacs /usr/local/bin/emacs
+fi
+
 # Add to PATH only if not already present
 for path in ${paths[*]}; do
   [[ ":$PATH:" != *":$path:"* ]] && export PATH="${path}:${PATH}"
