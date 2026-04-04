@@ -38,6 +38,10 @@ ensime.sbt
 .emacs.d/elpy/
 .emacs.d/var/
 
+# Org-mode generated files
+.emacs.d/.org-id-locations
+.emacs.d/.org-timestamps/
+
 # Claude Code - ignore ephemeral/session data, track only config
 .claude/*
 !.claude/CLAUDE.md
