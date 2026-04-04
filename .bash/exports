@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Make emacs the default editor
+export VISUAL=emacsclient
 export EDITOR=emacsclient
 
 # Prefer US Engligh and use UTF-8
