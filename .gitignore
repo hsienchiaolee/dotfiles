@@ -37,6 +37,7 @@ ensime.sbt
 .emacs.d/elpa/
 .emacs.d/elpy/
 .emacs.d/var/
+.emacs.d/projects
 
 # Org-mode generated files
 .emacs.d/.org-id-locations

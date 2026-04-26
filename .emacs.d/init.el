@@ -26,6 +26,7 @@
 (require 'shortcut-shell)
 (require 'shortcut-timestamp)
 
+(require 'setup-org-mode)
 (require 'setup-claude-code)
 
 (require 'misc)

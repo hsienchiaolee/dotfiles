@@ -125,29 +125,6 @@
   ;; (lsp-metals-server-command "~/.local/share/metals/metals") ;; or let lsp install it automatically
   )
 
-;; org mode
-(use-package org
-  :ensure t
-  :custom
-  (org-src-fontify-natively t)
-  (org-src-tab-acts-natively t)
-  (org-startup-indented t)
-  (org-startup-folded "showeverything")
-  :hook (
-         (org-mode . (lambda () (setq fill-column 120)))
-         (org-mode . turn-on-auto-fill)
-         (org-mode . visual-line-mode)
-         )
-  :config
-  (define-key org-mode-map (kbd "RET") 'org-return-indent)
-
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((shell . t)
-     (python . t)
-     (ruby . t)
-     (emacs-lisp . t))))
-
 ;; swift
 (use-package swift-mode
   :ensure t
