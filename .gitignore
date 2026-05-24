@@ -49,3 +49,4 @@ ensime.sbt
 !.claude/.claudeignore
 !.claude/settings.json
 !.claude/statusline-command.sh
+/.agent-shell/
