@@ -22,6 +22,9 @@ _x_: new codex
   ("m" agent-shell-manager-toggle)
   ("q" nil "cancel" :color blue))
 
+(autoload 'agent-shell-anthropic-start-claude-code "agent-shell-anthropic" nil t)
+(autoload 'agent-shell-openai-start-codex "agent-shell-openai" nil t)
+
 (use-package agent-shell
   :ensure t
   :ensure-system-package
@@ -33,6 +36,7 @@ _x_: new codex
   :custom
   (agent-shell-cwd-function (lambda () default-directory))
   (agent-shell-preferred-agent-config 'codex)
+  (agent-shell-prefer-session-resume nil)
   (agent-shell-header-style 'text)
   (agent-shell-show-welcome-message nil)
   (agent-shell-show-context-usage-indicator 'detailed))
