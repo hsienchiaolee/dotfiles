@@ -71,6 +71,12 @@ mise use python@VERSION
 
 ### Project Setup with direnv
 
+One-time setup (enables `use mise` in `.envrc` files):
+```bash
+mkdir -p ~/.config/direnv
+mise direnv activate > ~/.config/direnv/direnvrc
+```
+
 Copy the template from `direnv/python-project/.envrc`:
 ```bash
 use mise
