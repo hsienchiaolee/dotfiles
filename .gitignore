@@ -36,6 +36,7 @@ ensime.sbt
 .emacs.d/custom.el
 .emacs.d/elpa/
 .emacs.d/elpy/
+.emacs.d/agent/
 .emacs.d/var/
 .emacs.d/projects
 

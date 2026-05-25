@@ -6,6 +6,46 @@
 
 ;;; Code:
 
+(require 'subr-x)
+
+(declare-function agent-shell-project-buffers "agent-shell")
+(defvar agent-shell-buffer-name-format)
+
+(defun my-agent-shell--new-label ()
+  "Return a label for a new agent shell in the current project."
+  (require 'agent-shell)
+  (if (agent-shell-project-buffers)
+      (let ((label (string-trim (read-string "Agent label: "))))
+        (when (string-empty-p label)
+          (user-error "Agent label cannot be empty"))
+        label)
+    "default"))
+
+(defun my-agent-shell--start-labeled (start-function)
+  "Call START-FUNCTION with a human-readable label."
+  (let* ((label (my-agent-shell--new-label))
+         (agent-shell-buffer-name-format
+          (lambda (agent-name project-name)
+            (format "%s Agent @ %s: %s"
+                    agent-name project-name label))))
+    (call-interactively start-function)))
+
+(defun my-agent-shell-new-shell ()
+  "Start a new selected agent shell with a task label."
+  (interactive)
+  (my-agent-shell--start-labeled #'agent-shell-new-shell))
+
+(defun my-agent-shell-start-claude ()
+  "Start a new Claude shell with a task label."
+  (interactive)
+  (my-agent-shell--start-labeled
+   #'agent-shell-anthropic-start-claude-code))
+
+(defun my-agent-shell-start-codex ()
+  "Start a new Codex shell with a task label."
+  (interactive)
+  (my-agent-shell--start-labeled #'agent-shell-openai-start-codex))
+
 (defhydra hydra-agent-shell (:color teal :hint nil)
 "
      AGENT SHELL
@@ -16,9 +56,9 @@ _a_: new agent       _m_: manager dashboard
 _c_: new claude
 _x_: new codex
 "
-  ("a" agent-shell-new-shell)
-  ("c" agent-shell-anthropic-start-claude-code)
-  ("x" agent-shell-openai-start-codex)
+  ("a" my-agent-shell-new-shell)
+  ("c" my-agent-shell-start-claude)
+  ("x" my-agent-shell-start-codex)
   ("m" agent-shell-manager-toggle)
   ("q" nil "cancel" :color blue))
 
