@@ -56,7 +56,7 @@ _s_: start/reuse     _t_: toggle        _d_: context      _R_: region
 _a_: new agent       _j_: attention     _r_: region to    _F_: file
 _c_: new claude      _m_: manager       _f_: file to      _I_: clip image
 _x_: new codex                         _i_: clip image to _G_: screenshot
-                                      _g_: screenshot to
+_w_: new worktree                      _g_: screenshot to
 
      Compose / Inspect
 ---------------------------
@@ -68,6 +68,7 @@ _l_: toggle logging    _q_: cancel
   ("a" my-agent-shell-new-shell)
   ("c" my-agent-shell-start-claude)
   ("x" my-agent-shell-start-codex)
+  ("w" agent-shell-new-worktree-shell)
 
   ("t" agent-shell-toggle)
   ("j" agent-shell-attention-jump)
