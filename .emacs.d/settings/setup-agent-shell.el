@@ -50,16 +50,46 @@
 "
      AGENT SHELL
 
-     New               Manage
----------------------------------------------------
-_a_: new agent       _m_: manager dashboard
-_c_: new claude
-_x_: new codex
+     Start             Navigate          Send To           Quick Send
+---------------------------------------------------------------------------
+_s_: start/reuse     _t_: toggle        _d_: context      _R_: region
+_a_: new agent       _j_: attention     _r_: region to    _F_: file
+_c_: new claude      _m_: manager       _f_: file to      _I_: clip image
+_x_: new codex                         _i_: clip image to _G_: screenshot
+                                      _g_: screenshot to
+
+     Compose / Inspect
+---------------------------
+_p_: compose prompt    _T_: transcript
+_h_: command menu      _v_: traffic logs
+_l_: toggle logging    _q_: cancel
 "
+  ("s" agent-shell)
   ("a" my-agent-shell-new-shell)
   ("c" my-agent-shell-start-claude)
   ("x" my-agent-shell-start-codex)
+
+  ("t" agent-shell-toggle)
+  ("j" agent-shell-attention-jump)
   ("m" agent-shell-manager-toggle)
+
+  ("d" agent-shell-send-dwim)
+  ("r" agent-shell-send-region-to)
+  ("f" agent-shell-send-file-to)
+  ("i" agent-shell-send-clipboard-image-to)
+  ("g" agent-shell-send-screenshot-to)
+
+  ("R" agent-shell-send-region)
+  ("F" agent-shell-send-file)
+  ("I" agent-shell-send-clipboard-image)
+  ("G" agent-shell-send-screenshot)
+
+  ("p" agent-shell-prompt-compose)
+  ("T" agent-shell-open-transcript)
+  ("h" agent-shell-help-menu)
+  ("v" agent-shell-view-traffic)
+  ("l" agent-shell-toggle-logging)
+
   ("q" nil "cancel" :color blue))
 
 (autoload 'agent-shell-anthropic-start-claude-code "agent-shell-anthropic" nil t)
