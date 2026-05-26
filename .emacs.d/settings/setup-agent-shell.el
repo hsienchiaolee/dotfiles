@@ -102,7 +102,7 @@ _l_: toggle logging    _q_: cancel
   ((claude . "brew install claude")
    (codex . "brew install codex")
    (codex-acp . "brew install codex-acp")
-   (claude-agent-acp . "npm install -g @anthropic-ai/claude-agent-acp"))
+   (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp"))
   :bind ("C-c a" . hydra-agent-shell/body)
   :custom
   (agent-shell-cwd-function (lambda () default-directory))
