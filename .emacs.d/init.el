@@ -27,7 +27,6 @@
 (require 'shortcut-timestamp)
 
 (require 'setup-org-mode)
-(require 'setup-claude-code)
 (require 'setup-agent-shell)
 
 (require 'misc)
