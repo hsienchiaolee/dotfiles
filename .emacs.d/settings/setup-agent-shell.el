@@ -15,9 +15,11 @@
   "Return a label for a new agent shell in the current project."
   (require 'agent-shell)
   (if (agent-shell-project-buffers)
-      (let ((label (string-trim (read-string "Agent label: "))))
-        (when (string-empty-p label)
-          (user-error "Agent label cannot be empty"))
+      (let ((label "")
+            (prompt "Agent label: "))
+        (while (string-empty-p label)
+          (setq label (string-trim (read-string prompt))
+                prompt "Agent label cannot be empty; try again: "))
         label)
     "default"))
 
