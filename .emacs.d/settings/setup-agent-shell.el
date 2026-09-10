@@ -10,6 +10,7 @@
 
 (declare-function agent-shell-project-buffers "agent-shell")
 (defvar agent-shell-buffer-name-format)
+(defvar agent-shell-hermes-acp-command)
 
 (defun my-agent-shell--new-label ()
   "Return a label for a new agent shell in the current project."
@@ -32,6 +33,23 @@
                     agent-name project-name label))))
     (call-interactively start-function)))
 
+(defhydra hydra-agent-shell-hermes (:color teal :hint nil)
+"
+     HERMES PROFILE
+---------------------------
+_d_: default    _c_: coder
+_q_: cancel
+"
+  ("d" (my-agent-shell--start-labeled #'agent-shell-hermes-start-agent))
+  ("c" (progn
+         (require 'agent-shell-hermes)
+         (let ((agent-shell-hermes-acp-command
+                (append (list (car agent-shell-hermes-acp-command)
+                              "-p" "coder")
+                        (cdr agent-shell-hermes-acp-command))))
+           (my-agent-shell--start-labeled #'agent-shell-hermes-start-agent))))
+  ("q" nil "cancel" :color blue))
+
 (defhydra hydra-agent-shell (:color teal :hint nil)
 "
      AGENT SHELL
@@ -43,7 +61,7 @@ _a_: new agent       _j_: attention     _r_: region to    _F_: file
 _c_: new claude      _m_: manager       _f_: file to      _I_: clip image
 _x_: new codex                         _i_: clip image to _G_: screenshot
 _w_: new worktree                      _g_: screenshot to
-_e_: new hermes
+_e_: hermes profiles
 
      Compose / Inspect
 ---------------------------
@@ -55,7 +73,7 @@ _l_: toggle logging    _q_: cancel
   ("a" (my-agent-shell--start-labeled #'agent-shell-new-shell))
   ("c" (my-agent-shell--start-labeled #'agent-shell-anthropic-start-claude-code))
   ("x" (my-agent-shell--start-labeled #'agent-shell-openai-start-codex))
-  ("e" (my-agent-shell--start-labeled #'agent-shell-hermes-start-agent))
+  ("e" hydra-agent-shell-hermes/body)
   ("w" agent-shell-new-worktree-shell)
 
   ("t" agent-shell-toggle)
