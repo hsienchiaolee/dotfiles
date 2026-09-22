@@ -109,7 +109,6 @@ _l_: toggle logging    _q_: cancel
   ((claude . "brew install claude")
    (codex . "brew install codex")
    (codex-acp . "brew install codex-acp")
-   (hermes . "brew install hermes-agent")
    (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp"))
   :bind ("C-c a" . hydra-agent-shell/body)
   :custom
