@@ -1,3 +1,5 @@
+;;; init.el --- Emacs startup configuration -*- lexical-binding: t; -*-
+
 (when (< emacs-major-version 27)
   (package-initialize))
 
