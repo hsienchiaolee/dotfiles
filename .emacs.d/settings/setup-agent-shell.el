@@ -108,7 +108,7 @@ _l_: toggle logging    _q_: cancel
   :ensure-system-package
   ((claude . "brew install claude")
    (codex . "brew install codex")
-   (codex-acp . "brew install codex-acp")
+   (codex-acp . "npm install -g @agentclientprotocol/codex-acp")
    (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp"))
   :bind ("C-c a" . hydra-agent-shell/body)
   :custom
