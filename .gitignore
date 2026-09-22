@@ -35,6 +35,7 @@ ensime.sbt
 # Package artifacts and caching
 .emacs.d/custom.el
 .emacs.d/elpa/
+.emacs.d/eln-cache/
 .emacs.d/elpy/
 .emacs.d/agent/
 .emacs.d/var/
@@ -51,3 +52,4 @@ ensime.sbt
 !.claude/settings.json
 !.claude/statusline-command.sh
 /.agent-shell/
+.worktrees/
