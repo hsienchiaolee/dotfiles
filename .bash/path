@@ -2,6 +2,11 @@
 
 paths=()
 
+# User-installed executables
+if [ -d "$HOME/.local/bin" ]; then
+  paths+=("$HOME/.local/bin")
+fi
+
 # Go
 if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
   paths+=("$GOPATH/bin")
