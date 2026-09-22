@@ -77,10 +77,10 @@ _G_: todo list
      (ruby . t)
      (emacs-lisp . t))))
 
-(use-package org-mcp
-  :ensure t
-  :vc (:url "https://github.com/hsienchiaolee/org-mcp.git" :rev :newest)
-  :after org)
+;; (use-package org-mcp
+;;   :ensure t
+;;   :vc (:url "https://github.com/hsienchiaolee/org-mcp.git" :rev :newest)
+;;   :after org)
 
 (declare-function org-roam-db-sync "org-roam-db")
 
