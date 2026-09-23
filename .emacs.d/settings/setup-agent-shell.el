@@ -121,6 +121,8 @@ _l_: toggle logging    _q_: cancel
          "acp"))
   (agent-shell-cwd-function (lambda () default-directory))
   (agent-shell-preferred-agent-config 'codex)
+  (agent-shell-hermes-default-session-mode-id "accept_edits")
+  (agent-shell-openai-default-session-mode-id "agent")
   (agent-shell-prefer-session-resume nil)
   (agent-shell-header-style 'text)
   (agent-shell-show-welcome-message nil)
