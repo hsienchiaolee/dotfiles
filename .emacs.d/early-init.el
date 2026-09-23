@@ -14,4 +14,9 @@
   (setenv "MACOSX_DEPLOYMENT_TARGET"
           (car (process-lines "/usr/bin/sw_vers" "-productVersion"))))
 
+;; Keep Emacs' bundled compiler libraries out of LIBRARY_PATH inherited by
+;; processes it starts, while still making them available to native-comp.
+(add-to-list 'load-path (expand-file-name "settings" user-emacs-directory))
+(require 'setup-native-comp-environment)
+
 ;;; early-init.el ends here
